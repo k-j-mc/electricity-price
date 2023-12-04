@@ -21,7 +21,7 @@ const PriceTable = () => {
     };
 
     return (
-        <Grid container spacing={2} style={{ marginTop: "20px" }}>
+        <Grid container spacing={2} style={{ margin: "20px 0 30px 0" }}>
             <Grid item xs={0.5} />
             <Grid item xs={11}>
                 <TableContainer sx={{ maxHeight: 550 }} component={Paper}>

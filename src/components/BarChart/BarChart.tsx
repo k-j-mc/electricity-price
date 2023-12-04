@@ -62,7 +62,7 @@ const BarChart = () => {
         },
         yaxis: {
             title: {
-                text: "Price c/Kwh",
+                text: "Price c/ kWh",
             },
             labels: {
                 formatter: function (y: number) {
