@@ -25,7 +25,7 @@ export const initialiseData = () => {
     return async (dispatch: AppDispatch) => {
         const response = await priceService.getData();
 
-        dispatch(setPrices(response));
+        dispatch(setPrices(response.prices));
     };
 };
 

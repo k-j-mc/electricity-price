@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "./hooks/redux-hooks";
-
+import { useAppDispatch } from "./hooks/redux-hooks";
 import { initialiseData } from "./reducers/priceReducer";
+
+import BarChart from "./components/BarChart/BarChart";
 
 const App = () => {
     const dispatch = useAppDispatch();
@@ -10,7 +11,11 @@ const App = () => {
         dispatch(initialiseData());
     }, []);
 
-    return <div>App</div>;
+    return (
+        <div>
+            <BarChart />
+        </div>
+    );
 };
 
 export default App;
