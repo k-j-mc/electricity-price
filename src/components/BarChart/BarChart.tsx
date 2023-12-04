@@ -1,5 +1,6 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { useAppSelector } from "../../hooks/redux-hooks";
+
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 
@@ -7,7 +8,9 @@ const BarChart = () => {
     const { prices } = useAppSelector((state) => state.prices);
     const pricesArray = prices.map(({ price }) => price);
 
-    const datesArray = prices.map(({ startDate }) => startDate);
+    const datesArray = prices.map(({ startDate }) =>
+        new Date(startDate).toUTCString()
+    );
 
     const min = Math.min(...prices.map(({ price }) => price));
     const max = Math.max(...prices.map(({ price }) => price));
@@ -62,7 +65,7 @@ const BarChart = () => {
                 text: "Price c/Kwh",
             },
             labels: {
-                formatter: function (y: any) {
+                formatter: function (y: number) {
                     return y + " c";
                 },
             },
@@ -89,6 +92,23 @@ const BarChart = () => {
                         height={350}
                     />
                 </div>
+            </Grid>
+            <Grid item xs={0.5} />
+            <Grid item xs={0.5} />
+            <Grid item xs={3.66666} style={{ textAlign: "center" }}>
+                <Typography variant="h6">
+                    Minimum price: {min.toFixed(3)} c
+                </Typography>
+            </Grid>
+            <Grid item xs={3.66666} style={{ textAlign: "center" }}>
+                <Typography variant="h6">
+                    Average price: {average.toFixed(3)} c
+                </Typography>
+            </Grid>
+            <Grid item xs={3.66666} style={{ textAlign: "center" }}>
+                <Typography variant="h6">
+                    Maximum price: {max.toFixed(3)} c
+                </Typography>
             </Grid>
             <Grid item xs={0.5} />
         </Grid>
